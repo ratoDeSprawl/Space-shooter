@@ -120,6 +120,12 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             StartCoroutine(Die());
         }
+        if (other.CompareTag("ShootEnemy"))
+        {
+            Instantiate(explosionPrefab, other.transform.position, other.transform.rotation);
+            Destroy(other.gameObject);
+            StartCoroutine(Die());
+        }
         //if (other.CompareTag("ShootEnemy"))
         //{
         //    vidaAtual--;
@@ -134,6 +140,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator Die()
     {
+        Score.instance.ResetPoint();
         _canMove = false;
         Instantiate(explosionPrefab, transform.position, transform.rotation);
 
@@ -154,8 +161,13 @@ public class Player : MonoBehaviour
 
         }
 
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1f);
 
         _canMove = true;
+    }
+
+    public void Inalvejavel()
+    {
+
     }
 }
