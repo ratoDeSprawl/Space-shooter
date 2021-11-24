@@ -7,17 +7,25 @@ public class TimerCountdown : MonoBehaviour
 {
 
     public GameObject textDisplay;
-    public int secondsLeft = 30;
+    public int seconds = 0;
     public bool takingAway = false;
+
+
+
+
+    public Text timeRecordText;
+    public int timeRecord = 0;
+
+
 
     private void Start()
     {
-        textDisplay.GetComponent<Text>().text = "00 : " + secondsLeft.ToString();
+        textDisplay.GetComponent<Text>().text = "00 : " + seconds.ToString();
     }
 
     private void Update()
     {
-        if (takingAway == false && secondsLeft >0)
+        if (takingAway == false)
         {
             StartCoroutine(TimerTake());
         }
@@ -27,16 +35,16 @@ public class TimerCountdown : MonoBehaviour
     {
         takingAway = true;
         yield return new WaitForSeconds(1);
-        secondsLeft -= 1;
-        if (secondsLeft < 10)
+        seconds -= 1;
+        if (seconds < 10)
         {
-            textDisplay.GetComponent<Text>().text = "00:0" + secondsLeft.ToString();
+            textDisplay.GetComponent<Text>().text = "00:0" + seconds.ToString();
         }
         else
         {
-            textDisplay.GetComponent<Text>().text = "00:" + secondsLeft.ToString();
+            textDisplay.GetComponent<Text>().text = "00:" + seconds.ToString();
         }
-        textDisplay.GetComponent<Text>().text = "00:" + secondsLeft.ToString();
+        textDisplay.GetComponent<Text>().text = "00:" + seconds.ToString();
         takingAway = false;
     }
 }

@@ -10,8 +10,12 @@ public class Score : MonoBehaviour
     public Text scoreText;
     public Text highScoreText;
 
+
+
+
     int score = 0;
     public int highScore = 0;
+    
 
     private void Awake()
     {

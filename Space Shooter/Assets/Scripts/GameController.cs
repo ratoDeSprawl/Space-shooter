@@ -16,11 +16,11 @@ public class GameController : MonoBehaviour
     }
     private void Update()
     {
-        if (Timer.secondsLeft == 0)
+        /*if (Timer.seconds == 0)
         {
             
             GameOver(Points.highScore);
-        }
+        }*/
     }
 
 }
